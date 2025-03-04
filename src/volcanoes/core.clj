@@ -1,7 +1,6 @@
 (ns volcanoes.core
   (:require [clojure.data.csv :as csv]
             [clojure.java.io :as io]))
-
 (defn transform-header [header]
   (if (= "Elevation (m)" header)
    :elevation-meters
@@ -24,7 +23,6 @@
     (map (fn [volcano-line]
            (zipmap header-line volcano-line))
          volcano-lines)))
-
 (defn parse-numbers [volcano]
   (-> volcano
       (update :elevation-meters #(Integer/parseInt %))
