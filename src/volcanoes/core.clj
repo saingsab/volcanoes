@@ -38,3 +38,12 @@
   (let [volcanoes (first (filter #(= "210010" (:volcano-number %)) volcanoes-parsed))]
     (clojure.pprint/pprint volcanoes)))
 (def types (set (map :primary-volcano-type volcano-records)))
+
+(defn p [v & more]
+  (apply prn v more)
+  v)
+
+(defn hot-or-cold [temp]
+  (if (< temp 0)
+    :cold
+    :hot))
