@@ -47,3 +47,9 @@
   (if (< temp 0)
     :cold
     :hot))
+
+;;main way to execute code in the files
+
+;; 1. Whole file
+;; 2. Top-level form (epression)
+
