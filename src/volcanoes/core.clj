@@ -12,9 +12,15 @@
 (defn transform-header-row [header-line]
   (map transform-header header-line))
 
-(def csv-lines
+(defonce csv-lines
   (with-open [csv (io/reader "resources/volcanoes.csv")]
-    (doall (csv/read-csv csv))))
+    (doall
+      (csv/read-csv csv))))
+
+(defonce state (atom nil))
+
+(defn reset-state []
+  (reset! state nil))
 
 (def volcano-records
   (let [csv-lines (rest csv-lines)
@@ -52,4 +58,15 @@
 
 ;; 1. Whole file
 ;; 2. Top-level form (epression)
+;; 3. Single Expression
+;; 4. REPL Prompt
 
+;; Ergonomics
+
+;; Printing in Clojure
+;; There are 5 ways to print
+;; 1. println
+;; 2. prn
+;; 3. pprint : pretty print for a big map
+;; 4. print
+;; 5. format
